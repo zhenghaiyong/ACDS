@@ -19,7 +19,7 @@ The package contains the following files and folders:
 - `./size_otsu.m`: Uses OTSU's thresholding method to classify the sizes of the objects.
 - `./modify_binary_image.m`: Removes the possible exist small noise according to the size.
 - `./watershed_single.m`: Marker-controlled watershed algorithm for single cell segmentation.
-- `./watershed_multiple.m`: Marker_controlled watershed algorithm for multiple cells segmentation.
+- `./watershed_multiple.m`: Marker-controlled watershed algorithm for multiple cells segmentation.
 - `./experiments`: This folder contains the original images put in `single` and `multiple` folders, the gradient images stored in `gradients` folder, and the experimental results stored in `results` folder.
 
 Usage
