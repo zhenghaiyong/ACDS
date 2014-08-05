@@ -25,4 +25,4 @@ The package contains the following files and folders:
 References
 ==========
 
-[1] [Radhakrishna Achanta], [Sheila Hemami], [Francisco Estrada] and [Sabine Susstrunk], "Frequency-tuned Salient Region Detection," in IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2009.
+[1] Radhakrishna Achanta, Sheila Hemami, Francisco Estrada and Sabine Susstrunk, "Frequency-tuned Salient Region Detection," in IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2009.
