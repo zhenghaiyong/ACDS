@@ -40,6 +40,11 @@ References
 
 [1] Radhakrishna Achanta, Sheila Hemami, Francisco Estrada and Sabine Susstrunk, "Frequency-tuned Salient Region Detection," in IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2009.
 
+Copyright
+==========
+
+This software is free for use in research projects. If you publish results obtained using this software, please use this citation.
+
 Contact
 =======
 
