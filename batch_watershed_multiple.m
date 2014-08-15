@@ -5,8 +5,8 @@
 clc;
 clear all;
 %% Settings
-inputdir='./experiments/multiple/';
-outputdir='./experiments/results/multiple/';
+inputdir='./DATA/MicroscopicImages/multiple/';
+outputdir='./RESULTS/multiple/';
 exts={'.tif','.bmp','.jpg','.png','.gif','.jpeg'};
 %% END Settings
 for i=1:length(exts)
