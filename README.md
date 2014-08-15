@@ -20,20 +20,21 @@ The package contains the following files and folders:
 - `./modify_binary_image.m`: Removes the possible exist small noise according to the size.
 - `./watershed_single.m`: Marker-controlled watershed algorithm for single cell segmentation.
 - `./watershed_multiple.m`: Marker-controlled watershed algorithm for multiple cells segmentation.
-- `./experiments`: This folder contains the original images put in `single` and `multiple` folders, the gradient images stored in `gradients` folder, and the experimental results stored in `results` folder.
+- `./DATA`: This folder contains the benchmark DATASET for automatic cells detection and segmentation with `MicroscopicImages` and `GroundTruth` containing `single` and `multiple` resepectively.
+- `./RESULTS`: This folder contains the RESULTS for automatic cells detection and segmentation.
 
 Usage
 =====
 
 #### Single Cell Detection and Segmentation
 
-1. Put the microscopic images with single cell in `./experiments/single/` folder;
-2. Run `./batch_watershed_single.m` to detect and segment the cell into `./experiments/results/single/` folder.
+1. Put the microscopic images with single cell in `./DATA/MicroscopicImages/single/` folder;
+2. Run `./batch_watershed_single.m` to detect and segment the cell into `./RESULTS/single/` folder with the running time records in `./RESULTS/single.time`.
 
 #### Multiple Cells Detection and Segmentation
 
-1. Put the microscopic images with multiple cells in `./experiments/multiple/` folder;
-2. Run `./batch_watershed_multiple.m` to detect and segment the cells into `./experiments/results/multiple/` folder.
+1. Put the microscopic images with multiple cells in `./DATA/MicroscopicImages/multiple/` folder;
+2. Run `./batch_watershed_multiple.m` to detect and segment the cells into `./RESULTS/multiple/` folder with the running time records in `./RESULTS/multiple.time`.
 
 References
 ==========
