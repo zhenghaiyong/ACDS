@@ -57,7 +57,7 @@ for i=1:length(exts)
         %% Watershed from markers
         watershed_multiple(img_color,img_gray,cell_region,imgname,ext,row,col,outputdir); 
         %% END Watershed from markers
-        timgtime=toc(timg);%t2 end
+        timgtime=toc(timg);%t end
         fprintf(fid,'%9.5f :Automatic Detection and Segmentation\n',timgtime);
         end
     end
