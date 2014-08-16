@@ -22,6 +22,7 @@ The package contains the following files and folders:
 - `./watershed_multiple.m`: Marker-controlled watershed algorithm for multiple cells segmentation.
 - `./DATA`: This folder contains the benchmark DATASET for automatic cells detection and segmentation with `MicroscopicImages` and `GroundTruth` containing `single` and `multiple` resepectively.
 - `./RESULTS`: This folder contains the RESULTS for automatic cells detection and segmentation.
+- `./tools`: This folder contains some useful scripts.
 
 Usage
 =====
