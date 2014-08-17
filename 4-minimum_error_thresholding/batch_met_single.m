@@ -31,5 +31,5 @@ for i = 1:length(extgroup)
      end
 end
 ttime=toc(tstart);%Total time end
-fprintf(fid,'\n\t\tTotal running time: %g',ttime);
+fprintf(fid,'\n\tTotal running time: %g\t%s',ttime,datestr(now));
 fclose(fid);
