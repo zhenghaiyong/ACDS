@@ -41,6 +41,6 @@ s = double(hsi(:,:,2)); sm = mean(mean(s));
 %---------------------------------------------------------
 sm_distance = (s-sm).^2 ;
 sm=im2uint8(mat2gray(sm_distance));
-img_sm_name=strrep(imgname,ext,'-saliencymap-2-S.tif');
-imwrite(sm,strcat(outputdir,img_sm_name),'tif','Resolution',300);
+%TIME%img_sm_name=strrep(imgname,ext,'-saliencymap-2-S.tif');
+%TIME%imwrite(sm,strcat(outputdir,img_sm_name),'tif','Resolution',300);
 %---------------------------------------------------------

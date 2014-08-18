@@ -8,8 +8,8 @@ c=L(row,1);L(find(L==c))=0;
 d=L(row,col);L(find(L==d))=0;
 L(find(L~=0))=1;
 remove_fake_markers=logical(L);
-remove_fake_markers_name=strrep(imgname,ext,'-saliencymap-5-binary-removeCornerNoise.tif');
-imwrite(remove_fake_markers,strcat(outputdir,remove_fake_markers_name),'tif','Resolution',300);
+%TIME%remove_fake_markers_name=strrep(imgname,ext,'-saliencymap-5-binary-removeCornerNoise.tif');
+%TIME%imwrite(remove_fake_markers,strcat(outputdir,remove_fake_markers_name),'tif','Resolution',300);
 % closing and hole filling
 se=strel('disk',3);
 binary_close=imclose(remove_fake_markers,se);

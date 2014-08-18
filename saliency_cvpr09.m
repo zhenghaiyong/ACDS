@@ -26,7 +26,7 @@
 %---------------------------------------------------------
 % Read image and blur it with a 3x3 or 5x5 Gaussian filter
 %---------------------------------------------------------
-%�����ļ�����׺������ļ���?
+%�����ļ�����׺������ļ���?
 function sm=saliency_cvpr09(img_color,imgname,ext,outputdir)
 % img = imread(imgname);%Provide input image path
 %gfrgb = imfilter(img_color, fspecial('gaussian', 3, 3), 'symmetric', 'conv');
@@ -49,6 +49,6 @@ b = double(lab(:,:,3)); bm = mean(mean(b));
 sm_distance = (l-lm).^2 + (a-am).^2 + (b-bm).^2;
 sm=im2uint8(mat2gray(sm_distance));
 % imshow(sm,[]);
-img_sm_name=strrep(imgname,ext,'-saliencymap-1-lab-IG.tif');
-imwrite(sm,strcat(outputdir,img_sm_name),'tif','Resolution',300);
+%TIME%img_sm_name=strrep(imgname,ext,'-saliencymap-1-lab-IG.tif');
+%TIME%imwrite(sm,strcat(outputdir,img_sm_name),'tif','Resolution',300);
 %---------------------------------------------------------

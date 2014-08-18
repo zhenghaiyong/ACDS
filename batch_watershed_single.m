@@ -36,8 +36,8 @@ for i=1:length(exts)
         sm_IG=saliency_cvpr09(gf_img_color,imgname,ext,outputdir);%salient objects by IG method
         sm_S=saliency_cvpr09_S(gf_img_color,imgname,ext,outputdir);%salient objects by saturation
         saliencymap=(sm_IG+sm_S);%combined salient objects
-        img_sm_name=strrep(imgname,ext,'-saliencymap-3.tif');
-        imwrite(saliencymap,strcat(outputdir,img_sm_name),'tif','Resolution',300);
+        %TIME%img_sm_name=strrep(imgname,ext,'-saliencymap-3.tif');
+        %TIME%imwrite(saliencymap,strcat(outputdir,img_sm_name),'tif','Resolution',300);
         %% END Salient Objects Detection
         t1imgtime=toc(t1img);%t1 end
         fprintf(fid,'%10s\tSalient Objects Detection: %9.5f\t',imgname,t1imgtime);
@@ -46,8 +46,8 @@ for i=1:length(exts)
         [u,sigma]=expectation_variance(saliencymap);
         u=u+10;
         binary_saliencymap=im2bw(saliencymap,u/255);
-        img_binary_saliencymap_name=strrep(imgname,ext,'-saliencymap-4-binary.tif');
-        imwrite(binary_saliencymap,strcat(outputdir,img_binary_saliencymap_name),'tif','Resolution',300);
+        %TIME%img_binary_saliencymap_name=strrep(imgname,ext,'-saliencymap-4-binary.tif');
+        %TIME%imwrite(binary_saliencymap,strcat(outputdir,img_binary_saliencymap_name),'tif','Resolution',300);
         % Removing corner noise
         binary_image=remove_corner_noise(binary_saliencymap,imgname,ext,outputdir);
         % Removing small noise
