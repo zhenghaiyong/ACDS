@@ -1,2 +1,5 @@
 # Ignore *.bak files
 *.bak
+
+SaliencyMaps/*
+Segmentation/*
