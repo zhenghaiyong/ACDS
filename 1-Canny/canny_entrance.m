@@ -9,6 +9,8 @@ se=strel('disk',5);
 binary_dilate=imdilate(BW_edge,se);
 binary_holes=imfill(binary_dilate,'holes');
 [L,num]=bwlabel(binary_holes,4); 
+img_binary_multiple_name=strrep(imgname,ext,'-binary-multiple-Canny.tif');
+imwrite(L,strcat(outputdir,img_binary_multiple_name),'tif','Resolution',300);
 
 max=0;
 label=0;
@@ -21,8 +23,8 @@ end
 end
 L(find(L~=label))=0;
 gd=imerode(L,se);
-img_binary_name=strrep(imgname,ext,'-binary-Canny.tif');
-imwrite(gd,strcat(outputdir,img_binary_name),'tif','Resolution',300);
+img_binary_single_name=strrep(imgname,ext,'-binary-single-Canny.tif');
+imwrite(gd,strcat(outputdir,img_binary_single_name),'tif','Resolution',300);
 r=img_color(:,:,1);
 g=img_color(:,:,2);
 b=img_color(:,:,3);
