@@ -49,6 +49,6 @@ b = double(lab(:,:,3)); bm = mean(mean(b));
 sm_distance = (l-lm).^2 + (a-am).^2 + (b-bm).^2;
 sm=im2uint8(mat2gray(sm_distance));
 % imshow(sm,[]);
-%TIME%img_sm_name=strrep(imgname,ext,'-saliencymap-1-lab-IG.tif');
-%TIME%imwrite(sm,strcat(outputdir,img_sm_name),'tif','Resolution',300);
+img_sm_name=strrep(imgname,ext,'-saliencymap-1-lab-IG.tif');
+imwrite(sm,strcat(outputdir,img_sm_name),'tif','Resolution',300);
 %---------------------------------------------------------

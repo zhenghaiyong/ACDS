@@ -7,6 +7,6 @@ for i=1:num
         modified_image(f)=0;
     end
 end
-%TIME%modified_img_name=strrep(imgname,ext,'-saliencymap-6-binary-cells.tif');
-%TIME%imwrite(modified_image,strcat(outputdir,modified_img_name),'tif','Resolution',300);
+modified_img_name=strrep(imgname,ext,'-saliencymap-6-binary-cells.tif');
+imwrite(modified_image,strcat(outputdir,modified_img_name),'tif','Resolution',300);
 

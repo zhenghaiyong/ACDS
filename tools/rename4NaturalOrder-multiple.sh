@@ -15,7 +15,7 @@ elif [ ! -d $1 ]; then
 else
 
 DIR=$1
-for i in $(find ${DIR} -type f|grep '/[1-9]-m.jpg')
+for i in $(find ${DIR} -type f|grep '/[1-9].jpg')
 do 
 	echo -ne "RENAME: \033[34m $i \033[0m\t=>\t\033[41;33m ${DIR}/0${i##*/} \033[0m\n"
 	mv $i ${DIR}/0${i##*/}
