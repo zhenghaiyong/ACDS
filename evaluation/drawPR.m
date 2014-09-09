@@ -1,9 +1,14 @@
 function drawPR()
 InputResults = './pr/';
 customColor = cell(6,1);
-customColor{1, 1}='r'; customColor{2, 1}='g';
-customColor{3, 1}='b'; customColor{4, 1}='k';
-customColor{5, 1}='c'; customColor{6, 1}='m';
+customColor{1, 1}=[1 1 0];%'y' 'yellow'
+customColor{2, 1}=[1 0 1];%'m' 'magenta'
+customColor{3, 1}=[0 1 1];%'c' 'cyan'
+customColor{4, 1}=[1 0 0];%'r' 'red'
+customColor{5, 1}=[0 1 0];%'g' 'green'
+customColor{6, 1}=[0 0 1];%'b' 'blue'
+customColor{7, 1}=[0.5 0.5 0.5];
+customColor{8, 1}=[0 0 0];%'k' 'black'
 traverse(InputResults, customColor);
 
 function traverse(InputResults, customColor)
@@ -27,7 +32,7 @@ for i = 3:length(idsResults)
         series=regexp(InputResults,'/');
         titlename=InputResults((series(end-1)+1):(series(end)-1));
         title(titlename,'FontName','Times');
-        legend_handle=legend('IG','S','IG+S');
+        legend_handle=legend('SR','PQFT','PFDN','SIG','HFT','IG','S','IG+S');
         set(legend_handle,'Location','SouthWest','FontName','Times');
         xlabel('Recall','FontName','Times');
         ylabel('Precision','FontName','Times');
