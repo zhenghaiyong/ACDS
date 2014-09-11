@@ -21,6 +21,7 @@ for i = 3:length(idsResults)
             precision_6SalientObjectsSegmentation,recall_6SalientObjectsSegmentation,Fmeasure_6SalientObjectsSegmentation;...
             precision_7RemoveCornerNoise,recall_7RemoveCornerNoise,Fmeasure_7RemoveCornerNoise;...
             precision_8WatershedFromMarkers,recall_8WatershedFromMarkers,Fmeasure_8WatershedFromMarkers];
+        figure;
         bar(bar_all,'group');
         series=regexp(InputResults,'/');
         titlename=InputResults((series(end-1)+1):(series(end)-1));

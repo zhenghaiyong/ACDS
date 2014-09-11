@@ -32,17 +32,18 @@ if total_positive==0
 	return;
 end
 
-[M N] = size(SaliencyMap);
-sumPixel = 0;
-for i = 1:M
-    for j = 1:N
-        sumPixel = sumPixel+SaliencyMap(i,j);
-    end
-end
-avePixel = sumPixel/(M*N);
-T = min(2*avePixel,255);
-
-idx   = (SaliencyMap >= T);
+% [M N] = size(SaliencyMap);
+% sumPixel = 0;
+% for i = 1:M
+%     for j = 1:N
+%         sumPixel = sumPixel+SaliencyMap(i,j);
+%     end
+% end
+% avePixel = sumPixel/(M*N);
+% T = min(2*avePixel,255);
+% 
+% idx   = (SaliencyMap >= T);
+idx = logical(SaliencyMap);
 recall = sum(GroundTruth(idx)) / total_positive;
 precision=sum(GroundTruth(idx)) / (sum(instance_count(idx))+eps); 
 Fmeasure=(1.3*precision.*recall)/(0.3*precision+recall+eps);
