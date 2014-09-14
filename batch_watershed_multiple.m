@@ -9,11 +9,17 @@ inputdir='./DATA/MicroscopicImages/multiple/';
 outputdir='./RESULTS/multiple/';
 exts={'.tif','.bmp','.jpg','.png','.gif','.jpeg'};
 timefile='./RESULTS/multiple.time';
+cellsfile='./RESULTS/multiple.cells';
 %% END Settings
 if exist(timefile,'file')
     delete(timefile);
 end
-fid=fopen(timefile,'a+');
+if exist(cellsfile,'file')
+    delete(cellsfile)
+end
+timefid=fopen(timefile,'a+');
+cellsfid=fopen(cellsfile,'a+');
+fprintf(cellsfid,'IMG\tSal\tCorner\tSmall');
 tstart=tic;%Total time start
 for i=1:length(exts)
     ext=exts{i};
@@ -40,7 +46,7 @@ for i=1:length(exts)
         imwrite(saliencymap,strcat(outputdir,img_sm_name),'tif','Resolution',300);
         %% END Salient Objects Detection
         t1imgtime=toc(t1img);%t1 end
-        fprintf(fid,'%10s\tSalient Objects Detection: %9.5f\t',imgname,t1imgtime);
+        fprintf(timefid,'%10s\tSalient Objects Detection: %9.5f\t',imgname,t1imgtime);
         %% Markers Selection
         % Binarization
         thresh=graythresh(saliencymap);
@@ -48,20 +54,24 @@ for i=1:length(exts)
         img_binary_saliencymap_name=strrep(imgname,ext,'-saliencymap-4-binary.tif');
         imwrite(binary_saliencymap,strcat(outputdir,img_binary_saliencymap_name),'tif','Resolution',300);
         % Removing corner noise
-        binary_image=remove_corner_noise(binary_saliencymap,imgname,ext,outputdir);
+        [binary_image,numSaliency]=remove_corner_noise(binary_saliencymap,imgname,ext,outputdir);
+        fprintf(cellsfid,'\n%s\t%d',imgname,numSaliency);
         % Removing small noise    
-        [sizes,max_size,num]=size_objects(binary_image);
+        [sizes,max_size,numCorner]=size_objects(binary_image);
+        fprintf(cellsfid,'\t%d',numCorner);
         th=size_otsu(sizes,max_size);
-        cell_region=modify_binary_image(binary_image,th,imgname,ext,outputdir);
+        [cell_region,numSmall]=modify_binary_image(binary_image,th,imgname,ext,outputdir);
+        fprintf(cellsfid,'\t%d',numSmall);
         %% END Markers Selection
         %% Watershed from markers
         watershed_multiple(img_color,img_gray,cell_region,imgname,ext,row,col,outputdir); 
         %% END Watershed from markers
         timgtime=toc(timg);%t end
-        fprintf(fid,'%9.5f :Automatic Detection and Segmentation\n',timgtime);
+        fprintf(timefid,'%9.5f :Automatic Detection and Segmentation\n',timgtime);
         end
     end
 end
 ttime=toc(tstart);%Total time end
-fprintf(fid,'\n\tTotal running time: %g\t%s',ttime,datestr(now));
-fclose(fid);
+fprintf(timefid,'\n\tTotal running time: %g\t%s',ttime,datestr(now));
+fclose(cellsfid);
+fclose(timefid);

@@ -1,7 +1,7 @@
-function binary_holes=remove_corner_noise(binary_saliencymap,imgname,ext,outputdir)
+function [binary_holes,num]=remove_corner_noise(binary_saliencymap,imgname,ext,outputdir)
 %Remove the possible exist corner noise.
 [row,col]=size(binary_saliencymap);
-L=bwlabel(binary_saliencymap,4);
+[L,num]=bwlabel(binary_saliencymap,4);
 a=L(1,1);L(find(L==a))=0;
 b=L(1,col);L(find(L==b))=0;
 c=L(row,1);L(find(L==c))=0;

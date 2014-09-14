@@ -1,5 +1,5 @@
 function [sizes,max_size,num]=size_objects(binary_image)
-
+%Find and count all the objects and calculate their sizes.
 [L,num]=bwlabel(binary_image,4); 
 max_size=0;
 sizes=[];
