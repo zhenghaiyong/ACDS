@@ -22,7 +22,7 @@ for i = 1:length(extgroup)
             continue
         else
         cc=bwconncomp(f);
-        numCells=cc.NumObjects
+        numCells=cc.NumObjects;
         fprintf(cellsfid,'\n%d',numCells);
         end
     end
