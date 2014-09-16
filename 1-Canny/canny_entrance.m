@@ -1,4 +1,4 @@
-function canny_entrance(img_color,imgname,ext,outputdir)
+function numObjects=canny_entrance(img_color,imgname,ext,outputdir)
 
 img_gray=rgb2gray(img_color);
 BW_edge = edge(img_gray,'canny',[0.04,0.10],1.5);
@@ -8,7 +8,8 @@ imwrite(BW_edge,strcat(outputdir,img_edge_name),'tif','Resolution',300);
 se=strel('disk',5);
 binary_dilate=imdilate(BW_edge,se);
 binary_holes=imfill(binary_dilate,'holes');
-[L,num]=bwlabel(binary_holes,4); 
+[L,num]=bwlabel(binary_holes,4);
+numObjects=num;
 img_binary_multiple_name=strrep(imgname,ext,'-binary-multiple-Canny.tif');
 imwrite(L,strcat(outputdir,img_binary_multiple_name),'tif','Resolution',300);
 

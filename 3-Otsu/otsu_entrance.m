@@ -1,4 +1,4 @@
-function otsu_entrance(img_color,imgname,ext,outputdir)
+function numObjects=otsu_entrance(img_color,imgname,ext,outputdir)
 
 img_gray=rgb2gray(img_color);
 level = graythresh(img_gray);
@@ -10,6 +10,7 @@ se=strel('disk',5);
 binary_close=imclose(BW,se);
 binary_holes=imfill(binary_close,'holes');
 [L,num]=bwlabel(binary_holes,4);
+numObjects=num;
 
 max=0;
 label=0;

@@ -1,4 +1,4 @@
-function its_entrance(img_color,imgname,ext,outputdir)
+function numObjects=its_entrance(img_color,imgname,ext,outputdir)
 
 img_gray=rgb2gray(img_color);
 % level=isodata(img_gray);
@@ -11,7 +11,8 @@ imwrite(BW,strcat(outputdir,img_iteration_name),'tif','Resolution',300);
 se=strel('disk',5);
 binary_close=imclose(BW,se);
 binary_holes=imfill(binary_close,'holes');
-[L,num]=bwlabel(binary_holes,4); 
+[L,num]=bwlabel(binary_holes,4);
+numObjects=num;
 
 max=0;
 label=0;

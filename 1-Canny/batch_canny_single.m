@@ -7,7 +7,7 @@ timefile='../RESULTS/1Canny-single.time';
 if exist(timefile,'file')
     delete(timefile);
 end
-fid=fopen(timefile,'a+');
+timefid=fopen(timefile,'a+');
 tstart=tic;%Total time start
 for i = 1:length(extgroup)
     ext=extgroup(i);
@@ -24,12 +24,12 @@ for i = 1:length(extgroup)
             continue
         else
         img_color=imresize(f,1);
-        canny_entrance(img_color,imgname,ext,outputdir)     
+        canny_entrance(img_color,imgname,ext,outputdir)
         end
         timgtime=toc(timg);%t end
-        fprintf(fid,'%10s\tCanny edge detector: %9.5f\n',imgname,timgtime);
+        fprintf(timefid,'%10s\tCanny edge detector: %9.5f\n',imgname,timgtime);
     end
 end
 ttime=toc(tstart);%Total time end
-fprintf(fid,'\n\tTotal running time: %g\t%s',ttime,datestr(now));
-fclose(fid);
+fprintf(timefid,'\n\tTotal running time: %g\t%s',ttime,datestr(now));
+fclose(timefid);

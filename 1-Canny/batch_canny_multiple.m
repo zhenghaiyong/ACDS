@@ -4,10 +4,16 @@ inputdir='../DATA/MicroscopicImages/multiple/';
 outputdir='../RESULTS/1Canny/multiple/';
 extgroup={'.tif','.bmp','.jpg','.png','.gif','.jpeg'};
 timefile='../RESULTS/1Canny-multiple.time';
+cellsfile='../RESULTS/1Canny-multiple.cells';
 if exist(timefile,'file')
     delete(timefile);
 end
-fid=fopen(timefile,'a+');
+if exist(cellsfile,'file')
+    delete(cellsfile)
+end
+timefid=fopen(timefile,'a+');
+cellsfid=fopen(cellsfile,'a+');
+fprintf(cellsfid,'1Canny');
 tstart=tic;%Total time start
 for i = 1:length(extgroup)
     ext=extgroup(i);
@@ -24,12 +30,14 @@ for i = 1:length(extgroup)
             continue
         else
         img_color=imresize(f,1);
-        canny_entrance(img_color,imgname,ext,outputdir)     
+        numCells=canny_entrance(img_color,imgname,ext,outputdir);
+        fprintf(cellsfid,'\n%d',numCells);
         end
         timgtime=toc(timg);%t end
-        fprintf(fid,'%10s\tCanny edge detector: %9.5f\n',imgname,timgtime);
+        fprintf(timefid,'%10s\tCanny edge detector: %9.5f\n',imgname,timgtime);
     end
 end
 ttime=toc(tstart);%Total time end
-fprintf(fid,'\n\tTotal running time: %g\t%s',ttime,datestr(now));
-fclose(fid);
+fprintf(timefid,'\n\tTotal running time: %g\t%s',ttime,datestr(now));
+fclose(cellsfid);
+fclose(timefid);

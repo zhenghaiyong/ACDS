@@ -7,7 +7,7 @@ timefile='../RESULTS/5Kmeans-single.time';
 if exist(timefile,'file')
     delete(timefile);
 end
-fid=fopen(timefile,'a+');
+timefid=fopen(timefile,'a+');
 tstart=tic;%Total time start
 for i = 1:length(extgroup)
     ext=extgroup(i);
@@ -27,9 +27,9 @@ for i = 1:length(extgroup)
         kmeans_entrance(img_color,imgname,ext,outputdir)
         end
         timgtime=toc(timg);%t end
-        fprintf(fid,'%10s\tK-means clustering: %9.5f\n',imgname,timgtime);
+        fprintf(timefid,'%10s\tK-means clustering: %9.5f\n',imgname,timgtime);
      end
 end
 ttime=toc(tstart);%Total time end
-fprintf(fid,'\n\tTotal running time: %g\t%s',ttime,datestr(now));
-fclose(fid);
+fprintf(timefid,'\n\tTotal running time: %g\t%s',ttime,datestr(now));
+fclose(timefid);
