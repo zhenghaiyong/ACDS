@@ -39,8 +39,6 @@ for i=1:length(exts)
         img_sm_name=strrep(imgname,ext,'-saliencymap-3.tif');
         imwrite(saliencymap,strcat(outputdir,img_sm_name),'tif','Resolution',300);
         %% END Salient Objects Detection
-        t1imgtime=toc(t1img);%t1 end
-        fprintf(fid,'%10s\tSalient Objects Detection: %9.5f\t',imgname,t1imgtime);
         %% Markers Selection
         % Binarization
         [u,sigma]=expectation_variance(saliencymap);
@@ -53,6 +51,8 @@ for i=1:length(exts)
         % Removing small noise
         cell_region=extract_single_cell_region(binary_image);
         %% END Markers Selection
+        t1imgtime=toc(t1img);%t1 end
+        fprintf(fid,'%10s\tAutomatic Cells Detection: %9.5f\t',imgname,t1imgtime);
         %% Watershed from markers
         watershed_single(img_color,img_gray,cell_region,imgname,ext,row,col,outputdir); 
         %% END Watershed from markers
