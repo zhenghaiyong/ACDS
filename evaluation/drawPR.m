@@ -44,6 +44,8 @@ for i = 3:length(idsResults)
         set(gca,'FontName','Times');
         set(gcf,'paperpositionmode','auto');
         grid;
+        % (r,p) for single binarization by threshold=expectation+10
+        %plot(0.8783,0.8484,'p','LineWidth',1,'MarkerEdgeColor','k','MarkerFaceColor','y','MarkerSize',10);
         print('-dtiff','-r1000',[InputResults, strcat('pr-',titlename,'.tif')]);
         break;
     end
